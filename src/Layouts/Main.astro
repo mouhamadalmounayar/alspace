@@ -1,5 +1,10 @@
 ---
 import Navbar from "../components/Navbar.astro";
+type Props = {
+  pageTitle: string;
+  pageCaption: string;
+};
+const props: Props = Astro.props;
 ---
 
 <div class="main-container flex flex-col items-center">
@@ -90,7 +95,19 @@ import Navbar from "../components/Navbar.astro";
     </svg>
   </div>
   <Navbar />
-  <div class="content mt-48 flex flex-row items-center justify-center">
+  <div class="content mt-48 flex flex-col items-center justify-center gap-10">
+    <div class="annotations flex flex-col items-center justify-center">
+      <div class="PageTitle text-4xl">{props.pageTitle}</div>
+      <div class="PageCaption text-slate-400">{props.pageCaption}</div>
+    </div>
     <slot />
   </div>
 </div>
+<style>
+  .PageTitle {
+    font-family: "Inter-Bold";
+  }
+  .PageCaption {
+    font-family: "Inter-Regular";
+  }
+</style>

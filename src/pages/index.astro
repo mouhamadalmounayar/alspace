@@ -16,7 +16,10 @@ const blogDate = new Date();
     <title>AlSpace</title>
   </head>
   <body>
-    <Main>
+    <Main
+      pageTitle="ALBlog"
+      pageCaption="Welcome to my blog. Check out my latest articles here."
+    >
       <Latest image={image} blogTitle={title} blogDate={blogDate} />
     </Main>
   </body>
@@ -30,6 +33,10 @@ const blogDate = new Date();
   @font-face {
     font-family: "Inter-Bold";
     src: url("../../public/fonts/Inter/static/Inter-Bold.ttf");
+  }
+  @font-face {
+    font-family: "Inter-Regular";
+    src: url("../../public/fonts/Inter/static/Inter-Regular.ttf");
   }
   body {
     width: 100vw;
