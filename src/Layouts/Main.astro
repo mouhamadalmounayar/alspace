@@ -2,8 +2,8 @@
 import Navbar from "../components/Navbar.astro";
 ---
 
-<div class="main-container">
-  <div class="gradient absolute right-10">
+<div class="main-container flex flex-col items-center">
+  <div class="gradient absolute right-10 z-[-1]">
     <svg
       width="1250"
       height="auto"
@@ -90,4 +90,7 @@ import Navbar from "../components/Navbar.astro";
     </svg>
   </div>
   <Navbar />
+  <div class="content mt-48 flex flex-row items-center justify-center">
+    <slot />
+  </div>
 </div>

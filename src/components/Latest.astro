@@ -1,0 +1,31 @@
+---
+type Props = {
+  image: string;
+  blogTitle: string;
+  blogDate: Date;
+};
+const props: Props = Astro.props;
+const getDateAsString = (blogDate: Date) => {
+  return (
+    blogDate.getDay() + "-" + blogDate.getMonth() + "-" + blogDate.getFullYear()
+  );
+};
+---
+
+<div
+  class="container w-[870px] h-[350px] rounded-[12px] flex flex-row items-center bg-slate-50"
+>
+  <img class="w-[55%] rounded-l-[15px] h-full" src={props.image} />
+  <div class="annotations p-12 w-1/2">
+    <div class="blogTitle text-slate-900 text-2xl text-left">
+      {props.blogTitle}
+    </div>
+    <div class="date">{getDateAsString(props.blogDate)}</div>
+  </div>
+</div>
+
+<style>
+  .title {
+    font-family: "Inter-Bold";
+  }
+</style>

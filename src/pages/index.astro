@@ -1,5 +1,10 @@
 ---
 import Main from "../Layouts/Main.astro";
+import Latest from "../components/Latest.astro";
+// hard coded this now, to be replaced later.
+const image = "../../public/dark-blue-yellow.png";
+const title = "ProseMirror x Angular : My experience with prosemirror";
+const blogDate = new Date();
 ---
 
 <html lang="en">
@@ -8,10 +13,12 @@ import Main from "../Layouts/Main.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>AlSpace</title>
   </head>
   <body>
-    <Main />
+    <Main>
+      <Latest image={image} blogTitle={title} blogDate={blogDate} />
+    </Main>
   </body>
 </html>
 
@@ -19,6 +26,10 @@ import Main from "../Layouts/Main.astro";
   @font-face {
     font-family: "Inter-SemiBold";
     src: url("../../public/fonts/Inter/static/Inter-SemiBold.ttf");
+  }
+  @font-face {
+    font-family: "Inter-Bold";
+    src: url("../../public/fonts/Inter/static/Inter-Bold.ttf");
   }
   body {
     width: 100vw;
