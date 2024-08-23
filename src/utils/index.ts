@@ -1,10 +1,10 @@
 import type { ImageMetadata } from "astro";
-import { DEV_CATEGORIE } from "./categoriesLogos";
+import { DEV_CATEGORY } from "./categoriesLogos";
 import { imagesArray } from "./images";
 export class BlogHandler {
   private categoriesMap: Map<string, ImageMetadata> = new Map();
   constructor() {
-    this.categoriesMap.set("dev", DEV_CATEGORIE);
+    this.categoriesMap.set("dev", DEV_CATEGORY);
   }
   getGradient(): ImageMetadata {
     return imagesArray[0];

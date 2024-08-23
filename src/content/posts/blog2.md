@@ -2,7 +2,7 @@
 author: "Al Mounayar Mouhamad"
 date: 2024-08-05
 category: "dev"
-title: "Prosemirror x Angular : My experience with prosemirror"
+title: "Sample Blog"
 ---
 
 # sample blog
