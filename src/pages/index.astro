@@ -1,12 +1,11 @@
 ---
 import Main from "../layouts/Main.astro";
 import Latest from "../components/Latest.astro";
+import Remaining from "../components/Remaining.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import { BlogHandler } from "../utils/index.ts";
-
 const posts = await getCollection("posts");
-const blogHandler: BlogHandler = new BlogHandler();
 const sortByDate = (posts: CollectionEntry<"posts">[]) => {
   return posts.sort((a, b) => {
     return a.data.date.getTime() - b.data.date.getTime();
@@ -16,6 +15,9 @@ const sortByDate = (posts: CollectionEntry<"posts">[]) => {
 const sortedPosts = sortByDate(posts);
 const latestPost = sortedPosts[0];
 const remainingPosts = sortedPosts.slice(1);
+const blogHandler = new BlogHandler(latestPost);
+const blogImage = blogHandler.getImage();
+const blogCategory = blogHandler.getCategoryLogo();
 ---
 
 <html lang="en">
@@ -31,12 +33,20 @@ const remainingPosts = sortedPosts.slice(1);
       pageTitle="ALBlog"
       pageCaption="Welcome to my blog. Check out my latest articles here."
     >
-      <Latest
-        image={blogHandler.getGradient()}
-        blogTitle={latestPost.data.title}
-        blogDate={latestPost.data.date}
-        blogCategory={blogHandler.getCategoryLogo(latestPost.data.category)}
-      />
+      <div class="flex flex-col gap-20 items-center justify-center">
+        {
+          blogImage && blogCategory && (
+            <Latest
+              image={blogImage}
+              blogTitle={latestPost.data.title}
+              blogDate={blogHandler.getDateAsString()}
+              blogCategory={blogCategory}
+            />
+          )
+        }
+
+        <Remaining remainingPosts={remainingPosts} />
+      </div>
     </Main>
   </body>
 </html>

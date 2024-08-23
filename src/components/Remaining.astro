@@ -1,0 +1,12 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Blog from "../components/Blog.astro";
+type Props = {
+  remainingPosts: CollectionEntry<"posts">[];
+};
+const { remainingPosts } = Astro.props;
+---
+
+<div class="container py-10 w-[1000px] h-auto">
+  {remainingPosts.map((post) => <Blog post={post} />)}
+</div>

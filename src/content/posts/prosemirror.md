@@ -3,6 +3,7 @@ author: "Al Mounayar Mouhamad"
 date: 2023-08-04
 category: "dev"
 title: "Prosemirror x Angular : My experience with prosemirror"
+image: "dark-blue-yellow"
 ---
 
 # Prosemirror x Angular
