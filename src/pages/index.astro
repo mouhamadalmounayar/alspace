@@ -1,10 +1,21 @@
 ---
 import Main from "../layouts/Main.astro";
 import Latest from "../components/Latest.astro";
-// hard coded this now, to be replaced later.
-const image = "../../public/dark-blue-yellow.png";
-const title = "ProseMirror x Angular : My experience with prosemirror";
-const blogDate = new Date();
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { BlogHandler } from "../utils/index.ts";
+
+const posts = await getCollection("posts");
+const blogHandler: BlogHandler = new BlogHandler();
+const sortByDate = (posts: CollectionEntry<"posts">[]) => {
+  return posts.sort((a, b) => {
+    return a.data.date.getTime() - b.data.date.getTime();
+  });
+};
+
+const sortedPosts = sortByDate(posts);
+const latestPost = sortedPosts[0];
+const remainingPosts = sortedPosts.slice(1);
 ---
 
 <html lang="en">
@@ -20,7 +31,12 @@ const blogDate = new Date();
       pageTitle="ALBlog"
       pageCaption="Welcome to my blog. Check out my latest articles here."
     >
-      <Latest image={image} blogTitle={title} blogDate={blogDate} />
+      <Latest
+        image={blogHandler.getGradient()}
+        blogTitle={latestPost.data.title}
+        blogDate={latestPost.data.date}
+        blogCategory={blogHandler.getCategoryLogo(latestPost.data.category)}
+      />
     </Main>
   </body>
 </html>
@@ -33,6 +49,10 @@ const blogDate = new Date();
   @font-face {
     font-family: "Inter-Bold";
     src: url("../../public/fonts/Inter/static/Inter-Bold.ttf");
+  }
+  @font-face {
+    font-family: "Inter-ExtraBold";
+    src: url("../../public/fonts/Inter/static/Inter-ExtraBold.ttf");
   }
   @font-face {
     font-family: "Inter-Regular";

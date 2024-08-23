@@ -1,8 +1,11 @@
 ---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 type Props = {
-  image: string;
+  image: ImageMetadata;
   blogTitle: string;
   blogDate: Date;
+  blogCategory: ImageMetadata | undefined;
 };
 const props: Props = Astro.props;
 const getDateAsString = (blogDate: Date) => {
@@ -13,10 +16,29 @@ const getDateAsString = (blogDate: Date) => {
 ---
 
 <div
-  class="container w-[870px] h-[350px] rounded-[12px] flex flex-row items-center bg-slate-50"
+  class="container w-[900px] h-[350px] rounded-[12px] flex flex-row items-center bg-slate-50"
 >
-  <img class="w-[55%] rounded-l-[15px] h-full" src={props.image} />
-  <div class="annotations p-12 w-1/2 flex flex-col gap-3">
+  <div class="relative w-[60%] images rounded-l-[15px] h-full">
+    <Image
+      src={props.image}
+      class="absolute inset-0 z-0 h-full rounded-l-[15px]"
+      alt="blog-image"
+    />
+    {
+      props.blogCategory && (
+        <div class="absolute inset-0 flex justify-center items-center">
+          <Image
+            src={props.blogCategory}
+            class="w-[50px] h-auto object-contain"
+            alt="category"
+          />
+        </div>
+      )
+    }
+  </div>
+  <div
+    class="annotations p-12 flex flex-col items-start gap-3 w-[50%] h-full justify-center"
+  >
     <div class="blogTitle text-slate-900 text-2xl text-left">
       {props.blogTitle}
     </div>
@@ -28,6 +50,9 @@ const getDateAsString = (blogDate: Date) => {
 
 <style>
   .title {
-    font-family: "Inter-Bold";
+    font-family: "Inter-ExtraBold";
+  }
+  .annotations {
+    font-family: "Inter-ExtraBold";
   }
 </style>
