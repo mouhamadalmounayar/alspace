@@ -43,7 +43,7 @@ Thus, the `TraakEditorComponent` needs to pass a reference to the view to other 
 In angular, communication between components can be implemented in many ways (Services and Subjects, Inputs, Outputs, Ngrx etc). I decided to keep it simple by using angular's `Input` and `Output` decorators.
 The `TraakEditorComponent` creates the view, passes a reference to it to a parent component called `WrapperComponent`. The `WrapperComponent` then passes the view to other child components.
 
-![Alt text](./components.svg)
+![Alt text](../../images/components.svg)
 
 Angular's change detection ensures that child component inputs are updated whenever the parent component's view attribute is modified
 

@@ -30,18 +30,20 @@ const blogCategory = blogHandler.getCategoryLogo();
   </head>
   <body>
     <Main
-      pageTitle="ALBlog"
-      pageCaption="Welcome to my blog. Check out my latest articles here."
+      pageTitle="AlBlog"
+      pageCaption="Welcome to my blog. Check out my latest articles here "
     >
-      <div class="flex flex-col gap-20 items-center justify-center">
+      <div class="flex flex-col gap-40 items-center justify-center w-full">
         {
           blogImage && blogCategory && (
-            <Latest
-              image={blogImage}
-              blogTitle={latestPost.data.title}
-              blogDate={blogHandler.getDateAsString()}
-              blogCategory={blogCategory}
-            />
+            <a href={`/blog/${latestPost.slug}`}>
+              <Latest
+                image={blogImage}
+                blogTitle={latestPost.data.title}
+                blogDate={blogHandler.getDateAsString()}
+                blogCategory={blogCategory}
+              />
+            </a>
           )
         }
 
@@ -50,27 +52,3 @@ const blogCategory = blogHandler.getCategoryLogo();
     </Main>
   </body>
 </html>
-
-<style is:global>
-  @font-face {
-    font-family: "Inter-SemiBold";
-    src: url("../../public/fonts/Inter/static/Inter-SemiBold.ttf");
-  }
-  @font-face {
-    font-family: "Inter-Bold";
-    src: url("../../public/fonts/Inter/static/Inter-Bold.ttf");
-  }
-  @font-face {
-    font-family: "Inter-ExtraBold";
-    src: url("../../public/fonts/Inter/static/Inter-ExtraBold.ttf");
-  }
-  @font-face {
-    font-family: "Inter-Regular";
-    src: url("../../public/fonts/Inter/static/Inter-Regular.ttf");
-  }
-  body {
-    width: 100vw;
-    height: 100vh;
-    font-family: "Inter-SemiBold";
-  }
-</style>

@@ -7,6 +7,8 @@ type Props = {
 const { remainingPosts } = Astro.props;
 ---
 
-<div class="container py-10 w-[1000px] h-auto">
+<div
+  class="flex flex-col flex-wrap lg:justify-between lg:items-center lg:flex-row max-w-full sm:max-w-full-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl justify-center items-center gap-10"
+>
   {remainingPosts.map((post) => <Blog post={post} />)}
 </div>

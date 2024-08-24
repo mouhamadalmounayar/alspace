@@ -7,10 +7,10 @@ type Props = {
 const props: Props = Astro.props;
 ---
 
-<div class="main-container flex flex-col items-center">
-  <div class="gradient absolute right-10 z-[-1]">
+<div class="main-container px-28 flex flex-col items-center">
+  <div class="gradient absolute right-10 z-[-1] w-[500px] lg:w-[1000px]">
     <svg
-      width="1250"
+      width="100%"
       height="auto"
       viewBox="0 0 845 455"
       fill="none"
@@ -95,19 +95,17 @@ const props: Props = Astro.props;
     </svg>
   </div>
   <Navbar />
-  <div class="content mt-48 flex flex-col items-center justify-center gap-10">
-    <div class="annotations flex flex-col items-center justify-center">
-      <div class="PageTitle text-4xl">{props.pageTitle}</div>
+  <div
+    class="content mt-48 w-screen flex flex-col items-center justify-center gap-10 p-5"
+  >
+    <div
+      class="annotations w-auto h-auto gap-3 flex flex-col items-center justify-center"
+    >
+      <div class="PageTitle text-4xl lg:text-6xl font-extrabold text-slate-900">
+        {props.pageTitle}
+      </div>
       <div class="PageCaption text-slate-400">{props.pageCaption}</div>
     </div>
     <slot />
   </div>
 </div>
-<style>
-  .PageTitle {
-    font-family: "Inter-Bold";
-  }
-  .PageCaption {
-    font-family: "Inter-Regular";
-  }
-</style>

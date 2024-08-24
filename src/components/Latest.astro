@@ -5,49 +5,34 @@ type Props = {
   image: ImageMetadata;
   blogTitle: string;
   blogDate: string;
-  blogCategory: ImageMetadata | undefined;
+  blogCategory: ImageMetadata;
 };
 const props: Props = Astro.props;
 ---
 
 <div
-  class="container cursor-pointer w-[1000px] h-[400px] rounded-[12px] flex flex-row items-center bg-slate-50"
+  class="flex flex-col gap-3 bg-slate-50 rounded-[5px] lg:rounded-[12px] lg:flex-row lg:justify-between max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl"
 >
-  <div class="relative w-[60%] images rounded-l-[15px] h-full">
+  <div class="relative lg:w-[700px] border-red-500">
     <Image
       src={props.image}
-      class="absolute inset-0 z-0 h-full rounded-l-[15px]"
-      alt="blog-image"
+      class="rounded-t-[5px] lg:rounded-t-none lg:rounded-tl-[12px] lg:rounded-bl-[12px] h-full"
+      alt="description"
     />
-    {
-      props.blogCategory && (
-        <div class="absolute inset-0 flex flex-col justify-center items-center">
-          <Image
-            src={props.blogCategory}
-            class="w-[50px] h-auto object-contain"
-            alt="category"
-          />
-        </div>
-      )
-    }
+    <Image
+      src={props.blogCategory}
+      class="absolute inset-0 top-1/2 w-[50px] transform -translate-x-1/2 -translate-y-1/2 left-1/2"
+      alt="attribute"
+    />
   </div>
   <div
-    class="annotations p-12 flex flex-col items-start gap-3 w-[50%] h-full justify-center"
+    class="flex flex-col gap-3 p-7 items-start justify-center lg:w-[700px] border-blue-500 lg:p-28"
   >
-    <div class="blogTitle text-slate-900 text-2xl text-left">
+    <div class="lg:text-4xl text-slate-800 font-bold text-xl">
       {props.blogTitle}
     </div>
-    <div class="date text-sm text-slate-400">
+    <div class="text-slate-400 text-[12px] font-bold lg:text-xl">
       {props.blogDate}
     </div>
   </div>
 </div>
-
-<style>
-  .title {
-    font-family: "Inter-ExtraBold";
-  }
-  .annotations {
-    font-family: "Inter-ExtraBold";
-  }
-</style>

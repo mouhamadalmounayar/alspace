@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Main from "../../layouts/Main.astro";
+export const getStaticPaths = async () => {
+  const posts = await getCollection("posts");
+  const paths = posts.map((post) => {
+    return {
+      params: {
+        slug: post.slug,
+      },
+      props: {
+        post,
+      },
+    };
+  });
+  return paths;
+};
+type Props = {
+  post: CollectionEntry<"posts">;
+};
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>AlSpace</title>
+  </head>
+  <body>
+    <Main pageTitle="" pageCaption="">
+      <article
+        class="prose prose-sm sm:prose md:prose-lg lg:prose-xl xl:prose-2xl max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl"
+      >
+        <Content />
+      </article>
+    </Main>
+  </body>
+</html>

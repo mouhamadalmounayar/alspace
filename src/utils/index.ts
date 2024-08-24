@@ -1,6 +1,6 @@
 import type { ImageMetadata } from "astro";
 import type { CollectionEntry } from "astro:content";
-import { DEV_CATEGORY } from "./categoriesLogos";
+import { DEV_CATEGORY } from "./categoriesLogos.ts";
 import { getImage } from "./images";
 export class BlogHandler {
   private categoriesMap: Map<string, ImageMetadata> = new Map();

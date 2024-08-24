@@ -1,0 +1,15 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import Navbar from "../components/Navbar.astro";
+type Props = {
+  image: ImageMetadata | undefined;
+};
+
+const { image } = Astro.props;
+---
+
+<Navbar />
+<div class="flex flex-col items-center justify-center gap-3">
+  <slot />
+</div>
