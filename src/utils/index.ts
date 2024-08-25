@@ -25,6 +25,8 @@ export class BlogHandler {
 
   getDateAsString = () => {
     const date = this.post.data.date;
-    return date.getDay() + "-" + date.getMonth() + "-" + date.getFullYear();
+    return (
+      date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear()
+    );
   };
 }
