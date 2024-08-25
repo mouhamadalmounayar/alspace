@@ -36,7 +36,7 @@ const blogCategory = blogHandler.getCategoryLogo();
       <div class="flex flex-col gap-20 items-center justify-center w-full">
         {
           blogImage && blogCategory && (
-            <a href={`/blog/${latestPost.slug}`}>
+            <a href={`/alspace/blog/${latestPost.slug}`}>
               <Latest
                 image={blogImage}
                 blogTitle={latestPost.data.title}
