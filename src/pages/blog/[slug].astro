@@ -2,6 +2,8 @@
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Main from "../../layouts/Main.astro";
+import { BlogHandler } from "../../utils";
+import { Image } from "astro:assets";
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");
   const paths = posts.map((post) => {
@@ -21,6 +23,9 @@ type Props = {
 };
 const { post } = Astro.props;
 const { Content } = await post.render();
+const blogHandler: BlogHandler = new BlogHandler(post);
+const image = blogHandler.getImage();
+const blogCategory = blogHandler.getCategoryLogo();
 ---
 
 <html lang="en">
@@ -33,6 +38,22 @@ const { Content } = await post.render();
   </head>
   <body>
     <Main pageTitle="" pageCaption="">
+      {
+        image && blogCategory && (
+          <div class="relative">
+            <Image
+              class="rounded-lg xl:prose-2xl max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl"
+              src={image}
+              alt=""
+            />
+            <Image
+              class="absolute inset-0 top-1/2 w-[50px] lg:w-[100px]  transform -translate-x-1/2 text-white -translate-y-1/2 left-1/2"
+              src={blogCategory}
+              alt=""
+            />
+          </div>
+        )
+      }
       <article
         class="prose prose-sm sm:prose md:prose-lg lg:prose-xl xl:prose-2xl max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl"
       >

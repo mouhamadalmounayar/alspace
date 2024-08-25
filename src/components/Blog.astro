@@ -13,37 +13,37 @@ const blogCategory = blogHandler.getCategoryLogo();
 const blogImage = blogHandler.getImage();
 ---
 
-<div
-  class="container cursor-pointer w-full lg:w-[31%] flex flex-col flex-start gap-4"
->
-  <a href={`/blog/${post.slug}`} <div class="images w-full relative h-full">
-    {
-      blogImage && (
-        <Image
-          src={blogImage}
-          class="inset-0 z-0 rounded-[5px] md:rounded-[12px]"
-          alt="blog-image"
-        />
-      )
-    }
-    {
-      blogCategory && (
-        <div class="category flex h-full flex-col z-10 items-center justify-center inset-0 absolute">
+<div class="cursor-pointer w-full lg:w-[31%] flex flex-col flex-start gap-10">
+  <a href={`/blog/${post.slug}`}>
+    <div class="w-full relative h-full">
+      {
+        blogImage && (
           <Image
-            class="object-contain w-[50px] h-auto"
-            src={blogCategory}
+            src={blogImage}
+            class="inset-0 z-0 rounded-[5px] md:rounded-[12px]"
             alt="blog-image"
           />
-        </div>
-      )
-    }
+        )
+      }
+      {
+        blogCategory && (
+          <div class="flex h-full flex-col z-10 items-center justify-center inset-0 absolute">
+            <Image
+              class="object-contain w-[50px] h-auto"
+              src={blogCategory}
+              alt="blog-image"
+            />
+          </div>
+        )
+      }
+    </div>
+    <div class="flex flex-col items-start gap-1">
+      <div class="text-slate-900 lg:text-2xl text-xl text-left font-bold">
+        {post.data.title}
+      </div>
+      <div class="text-[12px] lg:text-xl font-bold text-slate-400">
+        {blogHandler.getDateAsString()}
+      </div>
+    </div>
   </a>
-  <div class="flex flex-col items-start gap-1">
-    <div class="text-slate-900 lg:text-4xl text-xl text-left font-bold">
-      {post.data.title}
-    </div>
-    <div class="date text-[12px] lg:text-xl font-bold text-slate-400">
-      {blogHandler.getDateAsString()}
-    </div>
-  </div>
 </div>

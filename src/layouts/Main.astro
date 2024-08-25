@@ -98,13 +98,11 @@ const props: Props = Astro.props;
   <div
     class="content mt-48 w-screen flex flex-col items-center justify-center gap-10 p-5"
   >
-    <div
-      class="annotations w-auto h-auto gap-3 flex flex-col items-center justify-center"
-    >
-      <div class="PageTitle text-4xl lg:text-6xl font-extrabold text-slate-900">
+    <div class="w-auto h-auto gap-3 flex flex-col items-center justify-center">
+      <div class="text-4xl font-extrabold text-slate-900">
         {props.pageTitle}
       </div>
-      <div class="PageCaption text-slate-400">{props.pageCaption}</div>
+      <div class="text-slate-400">{props.pageCaption}</div>
     </div>
     <slot />
   </div>

@@ -13,16 +13,16 @@ const props: Props = Astro.props;
 <div
   class="flex flex-col gap-3 bg-slate-50 rounded-[5px] lg:rounded-[12px] lg:flex-row lg:justify-between max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl"
 >
-  <div class="relative lg:w-[700px] border-red-500">
+  <div class="relative lg:w-[700px]">
     <Image
       src={props.image}
       class="rounded-t-[5px] lg:rounded-t-none lg:rounded-tl-[12px] lg:rounded-bl-[12px] h-full"
-      alt="description"
+      alt=""
     />
     <Image
       src={props.blogCategory}
-      class="absolute inset-0 top-1/2 w-[50px] transform -translate-x-1/2 -translate-y-1/2 left-1/2"
-      alt="attribute"
+      class="absolute inset-0 top-1/2 w-[50px] transform -translate-x-1/2 text-white -translate-y-1/2 left-1/2"
+      alt=""
     />
   </div>
   <div

@@ -3,7 +3,7 @@ author: "Al Mounayar Mouhamad"
 date: 2023-08-04
 category: "dev"
 title: "Prosemirror x Angular : My experience with prosemirror"
-image: "dark-blue-yellow"
+image: "dark-multi-c"
 ---
 
 # Prosemirror x Angular
@@ -15,7 +15,7 @@ After some research, I discovered ProseMirror. In this article, I share the know
 # Setup
 
 I am a big fan of angular so I decided to leverage angular components and prosemirror to build my text-editor.  
-I started by setting up a standard angular project with the Angular CLI and I installed all needed dependencies :
+I started by setting up a standard angular project with the Angular CLI and I installed all needed dependencies
 
 ```sh
 npm i prosemirror-model prosemirror-state prosemirror-view prosemirror-test-builder
