@@ -1,6 +1,6 @@
 ---
 author: "Al Mounayar Mouhamad"
-date: 2023-08-04
+date: 2024-08-04
 category: "dev"
 title: "Prosemirror x Angular : My experience with prosemirror"
 image: "dark-multi-c"
