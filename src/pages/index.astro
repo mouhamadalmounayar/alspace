@@ -13,8 +13,8 @@ const sortByDate = (posts: CollectionEntry<"posts">[]) => {
 };
 
 const sortedPosts = sortByDate(posts);
-const latestPost = sortedPosts[0];
-const remainingPosts = sortedPosts.slice(1);
+const latestPost = sortedPosts[sortedPosts.length - 1];
+const remainingPosts = sortedPosts.slice(0, sortedPosts.length - 1);
 const blogHandler = new BlogHandler(latestPost);
 const blogImage = blogHandler.getImage();
 const blogCategory = blogHandler.getCategoryLogo();
